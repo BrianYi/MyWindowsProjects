@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyWindowsProjects", "MyWindowsProjects\MyWindowsProjects.vcxproj", "{FDF25FC3-1477-4598-9FFB-AEEC8F686E39}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C2)ScrnSize", "ScrnSize\ScrnSize.vcxproj", "{89131330-241B-49D1-9D5D-8910A4D7FD3B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C1)HelloMsg", "HelloMsg\HelloMsg.vcxproj", "{FDF25FC3-1477-4598-9FFB-AEEC8F686E39}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C3)HelloWin", "HelloWin\HelloWin.vcxproj", "{6E3D7B86-1408-4603-909F-0F76B8DADD6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +13,18 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89131330-241B-49D1-9D5D-8910A4D7FD3B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{89131330-241B-49D1-9D5D-8910A4D7FD3B}.Debug|Win32.Build.0 = Debug|Win32
+		{89131330-241B-49D1-9D5D-8910A4D7FD3B}.Release|Win32.ActiveCfg = Release|Win32
+		{89131330-241B-49D1-9D5D-8910A4D7FD3B}.Release|Win32.Build.0 = Release|Win32
 		{FDF25FC3-1477-4598-9FFB-AEEC8F686E39}.Debug|Win32.ActiveCfg = Debug|Win32
 		{FDF25FC3-1477-4598-9FFB-AEEC8F686E39}.Debug|Win32.Build.0 = Debug|Win32
 		{FDF25FC3-1477-4598-9FFB-AEEC8F686E39}.Release|Win32.ActiveCfg = Release|Win32
 		{FDF25FC3-1477-4598-9FFB-AEEC8F686E39}.Release|Win32.Build.0 = Release|Win32
+		{6E3D7B86-1408-4603-909F-0F76B8DADD6F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6E3D7B86-1408-4603-909F-0F76B8DADD6F}.Debug|Win32.Build.0 = Debug|Win32
+		{6E3D7B86-1408-4603-909F-0F76B8DADD6F}.Release|Win32.ActiveCfg = Release|Win32
+		{6E3D7B86-1408-4603-909F-0F76B8DADD6F}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
