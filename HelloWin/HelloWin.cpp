@@ -31,7 +31,7 @@ int WINAPI WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, 
     wndclass.hbrBackground  = (HBRUSH)GetStockObject(WHITE_BRUSH);
     wndclass.lpszMenuName   = 0;
     wndclass.lpszClassName  = szAppName;
-
+    
     if (!RegisterClass(&wndclass)) {
         MessageBox(0, TEXT("This program requires Windows NT!"), szAppName, MB_ICONERROR);
         return 0;
@@ -47,9 +47,21 @@ int WINAPI WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, 
         0,
         hInstance,
         0);
-
+    HWND hwndChild = CreateWindow(szAppName,
+        TEXT("Child window"),
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        CW_USEDEFAULT,
+        hwnd,
+        0,
+        hInstance,
+        0);
     ShowWindow(hwnd, nShowCmd);
-    UpdateWindow(hwnd);
+    ShowWindow(hwndChild, SW_MAXIMIZE);
+    UpdateWindow(hwnd);         // send a WM_PAINT message to window procedure
+    UpdateWindow(hwndChild);
 
     while(GetMessage(&msg, 0, 0, 0)) {
         TranslateMessage(&msg);
