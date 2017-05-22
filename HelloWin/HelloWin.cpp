@@ -47,23 +47,15 @@ int WINAPI WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, 
         0,
         hInstance,
         0);
-    HWND hwndChild = CreateWindow(szAppName,
-        TEXT("Child window"),
-        WS_OVERLAPPEDWINDOW,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
-        CW_USEDEFAULT,
-        hwnd,
-        0,
-        hInstance,
-        0);
     ShowWindow(hwnd, nShowCmd);
-    ShowWindow(hwndChild, SW_MAXIMIZE);
     UpdateWindow(hwnd);         // send a WM_PAINT message to window procedure
-    UpdateWindow(hwndChild);
 
-    while(GetMessage(&msg, 0, 0, 0)) {
+	BOOL fRet;
+    while( (fRet = GetMessage(&msg, 0, 0, 0)) != 0) {
+		if (fRet == -1) {
+			// handle the error and possibly exit
+			break;
+		}
         TranslateMessage(&msg);
         DispatchMessage(&msg);
     }
@@ -72,10 +64,6 @@ int WINAPI WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, 
 
 LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    HDC         hdc;    // Handle to a device context
-    PAINTSTRUCT ps;     // Paint structure
-    RECT        rect;   // Rectangle structure
-
     switch (message)
     {
     case WM_CREATE:
@@ -84,7 +72,10 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             return 0;
     	}
     case WM_PAINT:
-        {
+		{ 
+			HDC         hdc;    // Handle to a device context
+			PAINTSTRUCT ps;     // Paint structure
+			RECT        rect;   // Rectangle structure
             hdc = BeginPaint(hwnd, &ps);
             GetClientRect(hwnd, &rect);
             DrawText(hdc, TEXT("Hello, Windows 98!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
@@ -93,9 +84,14 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         }
     case WM_DESTROY:
         {
-            PostQuitMessage(0);
+            PostQuitMessage(5);
             return 0;
         }
+	case WM_CHAR:
+		{
+			// deal with input operation
+			return 0;
+		}
     default:
     	break;
     }
