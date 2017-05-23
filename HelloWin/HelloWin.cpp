@@ -73,13 +73,37 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     	}
     case WM_PAINT:
 		{ 
-			HDC         hdc;    // Handle to a device context
-			PAINTSTRUCT ps;     // Paint structure
-			RECT        rect;   // Rectangle structure
-            hdc = BeginPaint(hwnd, &ps);
-            GetClientRect(hwnd, &rect);
-            DrawText(hdc, TEXT("Hello, Windows 98!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
-            EndPaint(hwnd, &ps);
+			LOGFONT logfont;
+			::ZeroMemory(&logfont, sizeof(LOGFONT));
+			logfont.lfCharSet = GB2312_CHARSET;
+			logfont.lfHeight = 20;
+			HFONT hFont = CreateFontIndirect(&logfont);
+
+			HDC hdc = GetDC(0);
+			RECT        rect; 
+			rect.left = rect.top = 0;
+			rect.right = rect.bottom = 200;
+			SetTextColor(hdc, RGB(0,0,255));
+			SetBkColor(hdc, RGB(255,0,0));
+			SetBkMode(hdc, OPAQUE);
+			SelectObject(hdc, hFont);
+			
+			//GetClientRect(hwnd, &rect);
+
+			DrawText(hdc, TEXT("Hello, Windows 98!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+			ReleaseDC(0, hdc);
+			DeleteObject(hFont);
+// 			HDC         hdc;    // Handle to a device context
+// 			PAINTSTRUCT ps;     // Paint structure
+// 			RECT        rect;   // Rectangle structure
+// 			hdc = BeginPaint(hwnd, &ps);	// invalid region to be erased
+//             GetClientRect(hwnd, &rect);
+// 
+//             DrawText(hdc, TEXT("Hello, Windows 98!"), -1, &rect, DT_SINGLELINE | DT_CENTER | DT_VCENTER);
+//             EndPaint(hwnd, &ps);	// release the device context handle
+// 
+// 			SelectClipPath(hdc, RGN_AND);
+// 			FillRect(hdc, &rect, (HBRUSH)GetStockObject(GRAY_BRUSH));
             return 0;
         }
     case WM_DESTROY:
