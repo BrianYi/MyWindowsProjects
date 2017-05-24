@@ -49,7 +49,7 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    static int cxChar, cxCaps, cyChar, cyClient, iVscrollPos ;
+    static int cxChar, cxCaps, cyChar, cyClient, iVscrollPos , iVscrollMax;
     HDC         hdc ;
     int         i, y ;
     PAINTSTRUCT ps ;
@@ -76,6 +76,8 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_SIZE:
         {
             cyClient = HIWORD(lParam);
+			iVscrollMax = max(0, NUMLINES - cyClient / cyChar);
+			SetScrollRange(hwnd, SB_VERT, 0, iVscrollMax, TRUE);
             return 0;
         }
     case WM_VSCROLL:
@@ -105,11 +107,12 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                 break;
             }
 
-            iVscrollPos = max(0, min(iVscrollPos, NUMLINES - 1));
+            iVscrollPos = max(0, min(iVscrollPos, iVscrollMax));
 
             if (iVscrollPos != GetScrollPos(hwnd, SB_VERT)) {
                 SetScrollPos(hwnd, SB_VERT, iVscrollPos, TRUE);
                 InvalidateRect(hwnd, 0, TRUE);
+				UpdateWindow(hwnd);	// will not call the window procedure if the entire client area is valid
             }
             return 0;
         }
