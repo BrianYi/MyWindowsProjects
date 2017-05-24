@@ -85,6 +85,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int			i ;
 	PAINTSTRUCT	ps ;
 	TEXTMETRIC	tm ;
+    POINT apt[5] = { 110, 110, 210, 110, 210, 210, 110, 210, 110, 110 };
 
 	switch (message) 
 	{
@@ -117,6 +118,24 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			SetTextAlign(hdc, TA_LEFT | TA_TOP);
 		}
+
+        // draw a grid
+        RECT rect;
+        GetClientRect(hwnd, &rect);
+        for (int x = 0; x < rect.right; x += 100) 
+        {
+            MoveToEx(hdc, x, 0, NULL);
+            LineTo(hdc, x, rect.bottom);
+        }
+        for (int y = 0; y < rect.bottom; y += 100) 
+        {
+            MoveToEx(hdc, 0, y, NULL);
+            LineTo(hdc, rect.right, y);
+        }
+
+
+        // draw a path
+        Polyline(hdc, apt, sizeof(apt) / sizeof(apt[0]));   
 
 		EndPaint(hwnd, &ps);
 		return 0;

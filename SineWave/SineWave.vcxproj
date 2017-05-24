@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C5F6656E-9132-4154-9722-29CB97642062}</ProjectGuid>
+    <ProjectGuid>{D3C44FBD-ABDA-41B3-9D21-84DDC4AFCFB7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>DevCaps1</RootNamespace>
-    <ProjectName>(C5)DevCaps1</ProjectName>
+    <RootNamespace>SineWave</RootNamespace>
+    <ProjectName>(C5)SineWave</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,7 +76,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DevCaps1.cpp" />
+    <ClCompile Include="SineWave.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
