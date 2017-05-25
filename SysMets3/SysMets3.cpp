@@ -97,7 +97,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		SetScrollInfo(hwnd, SB_HORZ, &si, TRUE);
 		return 0;
 
-
 	case WM_VSCROLL:
 
 		// get old scroll info
@@ -214,14 +213,17 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		GetScrollInfo(hwnd, SB_HORZ, &si);
 		iHorzPos	= si.nPos ;
 
+		// set window origin
+		SetWindowOrgEx(hdc, iHorzPos * cxChar, iVertPos * cyChar, 0);
+
 		// calculate absolute position of uncovered invalidated region in the whole full page
 		iPaintBeg	= max (0, iVertPos + ps.rcPaint.top / cyChar) ;
 		iPaintEnd	= min (NUMLINES - 1, iVertPos + ps.rcPaint.bottom / cyChar) ;
 
 		for (i = iPaintBeg; i <= iPaintEnd ; i++) 
 		{
-			x	= cxChar * (1 - iHorzPos) ;
-			y	= cyChar * (i - iVertPos) ;
+			x	= cxChar * (1/* - iHorzPos*/) ;
+			y	= cyChar * (i/* - iVertPos*/) ;
 
 			TextOut(hdc, x, y, sysmetrics[i].szLabel,
 				lstrlen(sysmetrics[i].szLabel));

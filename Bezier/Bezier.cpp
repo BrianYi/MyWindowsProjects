@@ -62,9 +62,15 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     HDC         hdc;
     int         cxClient, cyClient;
     PAINTSTRUCT ps;
+	static HPEN	hWhitePen, hBlackPen, hPenSaved;
 
     switch (message)
     {
+	case WM_CREATE:
+		hWhitePen	= (HPEN)GetStockObject(WHITE_PEN);
+		hBlackPen	= (HPEN)CreatePen(PS_DASH, 0, BLACK_PEN);
+		return 0;
+
     case WM_SIZE:
         cxClient    = LOWORD(lParam);
         cyClient    = HIWORD(lParam);
@@ -89,9 +95,10 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         if (wParam & MK_LBUTTON || wParam & MK_RBUTTON) 
         {
             hdc = GetDC(hwnd);
-
-            SelectObject(hdc, GetStockObject(WHITE_PEN));
-            DrawBezier(hdc, apt);
+            
+			SelectObject(hdc, hWhitePen);
+            
+			DrawBezier(hdc, apt);
 
             if (wParam & MK_LBUTTON) 
             {
@@ -105,10 +112,11 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                 apt[2].y    = HIWORD(lParam);
             }
 
-            SelectObject(hdc, GetStockObject(BLACK_PEN));
-            DrawBezier(hdc, apt);
-
-            ReleaseDC(hwnd, hdc);
+			SelectObject(hdc, hBlackPen);
+            
+			DrawBezier(hdc, apt);
+            
+			ReleaseDC(hwnd, hdc);
         }
         return 0;
 
@@ -116,14 +124,19 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         InvalidateRect(hwnd, NULL, TRUE);
 
         hdc = BeginPaint(hwnd, &ps);
+		
+		hPenSaved = (HPEN)SelectObject(hdc, hBlackPen);
 
-        DrawBezier(hdc, apt);
+		DrawBezier(hdc, apt);
 
         EndPaint(hwnd, &ps);
 
         return 0;
 
     case WM_DESTROY:
+		DeleteObject(hWhitePen);
+		DeleteObject(hBlackPen);
+		DeleteObject(hPenSaved);
         PostQuitMessage(0);
         return 0;
 
