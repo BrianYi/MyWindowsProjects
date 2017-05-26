@@ -29,6 +29,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyWhatSize", "MyWhatSize\My
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C5)RandRect", "RandRect\RandRect.vcxproj", "{7F6DA8F5-00DE-453D-8885-7508820AA814}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyPolygon", "MyPolygon\MyPolygon.vcxproj", "{EF362E78-63D4-45EF-89F3-EC4A5589A73D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C5)Clover", "Clover\Clover.vcxproj", "{B21167D3-7481-436E-9133-0694C0289515}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -91,6 +95,14 @@ Global
 		{7F6DA8F5-00DE-453D-8885-7508820AA814}.Debug|Win32.Build.0 = Debug|Win32
 		{7F6DA8F5-00DE-453D-8885-7508820AA814}.Release|Win32.ActiveCfg = Release|Win32
 		{7F6DA8F5-00DE-453D-8885-7508820AA814}.Release|Win32.Build.0 = Release|Win32
+		{EF362E78-63D4-45EF-89F3-EC4A5589A73D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{EF362E78-63D4-45EF-89F3-EC4A5589A73D}.Debug|Win32.Build.0 = Debug|Win32
+		{EF362E78-63D4-45EF-89F3-EC4A5589A73D}.Release|Win32.ActiveCfg = Release|Win32
+		{EF362E78-63D4-45EF-89F3-EC4A5589A73D}.Release|Win32.Build.0 = Release|Win32
+		{B21167D3-7481-436E-9133-0694C0289515}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B21167D3-7481-436E-9133-0694C0289515}.Debug|Win32.Build.0 = Debug|Win32
+		{B21167D3-7481-436E-9133-0694C0289515}.Release|Win32.ActiveCfg = Release|Win32
+		{B21167D3-7481-436E-9133-0694C0289515}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
