@@ -115,6 +115,13 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 		EndPaint(hwnd, &ps);
 		return 0;
 
+	case WM_SYSKEYDOWN:
+	case WM_SYSKEYUP:
+	case WM_SYSCHAR:
+	case WM_KEYDOWN:
+	case WM_KEYUP:
+		return 0;
+
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;
