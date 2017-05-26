@@ -33,6 +33,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyPolygon", "MyPolygon\MyPo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C5)Clover", "Clover\Clover.vcxproj", "{B21167D3-7481-436E-9133-0694C0289515}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C6)SysMets4", "SysMets4\SysMets4.vcxproj", "{2CD17DF2-DD88-450C-837B-4BC19ED61696}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C6)KeyView1", "KeyView1\KeyView1.vcxproj", "{52FC9B95-62D2-4281-ACA1-3E5C09983C93}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -103,6 +107,14 @@ Global
 		{B21167D3-7481-436E-9133-0694C0289515}.Debug|Win32.Build.0 = Debug|Win32
 		{B21167D3-7481-436E-9133-0694C0289515}.Release|Win32.ActiveCfg = Release|Win32
 		{B21167D3-7481-436E-9133-0694C0289515}.Release|Win32.Build.0 = Release|Win32
+		{2CD17DF2-DD88-450C-837B-4BC19ED61696}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2CD17DF2-DD88-450C-837B-4BC19ED61696}.Debug|Win32.Build.0 = Debug|Win32
+		{2CD17DF2-DD88-450C-837B-4BC19ED61696}.Release|Win32.ActiveCfg = Release|Win32
+		{2CD17DF2-DD88-450C-837B-4BC19ED61696}.Release|Win32.Build.0 = Release|Win32
+		{52FC9B95-62D2-4281-ACA1-3E5C09983C93}.Debug|Win32.ActiveCfg = Debug|Win32
+		{52FC9B95-62D2-4281-ACA1-3E5C09983C93}.Debug|Win32.Build.0 = Debug|Win32
+		{52FC9B95-62D2-4281-ACA1-3E5C09983C93}.Release|Win32.ActiveCfg = Release|Win32
+		{52FC9B95-62D2-4281-ACA1-3E5C09983C93}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

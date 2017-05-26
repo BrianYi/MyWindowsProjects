@@ -58,12 +58,14 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 	HRGN		hRgnTemp[6];
 	int			i;
 	PAINTSTRUCT	ps;
-	static POINT	apt[8] = {
+	static POINT	aptData[8] = {
 		-cxWindowExt / 2, -cyWindowExt / 6, 0, cyWindowExt / 6,
 		0, cyWindowExt / 6, cxWindowExt / 2, -cyWindowExt / 6,
 		-cxWindowExt / 6, 0, cxWindowExt / 6, cyWindowExt / 2,
 		-cxWindowExt / 6, 0, cxWindowExt / 6, -cyWindowExt / 2
 	};
+
+    POINT   apt[8];
 
 	switch (iMsg) 
 	{
@@ -84,6 +86,10 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 		SetViewportExtEx(hdc, cxClient, cyClient, NULL);
 		// SetWindowOrgEx(hdc, -cxWindowExt / 2, cyWindowExt / 2, NULL);	//与下面的这句效果相同
 		SetViewportOrgEx(hdc, cxClient / 2, cyClient / 2, NULL);
+        for (i = 0; i < 8; i++) 
+        {
+            apt[i]  = aptData[i];
+        }
 		LPtoDP(hdc, apt, 8);
 
 		for (i = 0; i < 4; i++) 
@@ -113,13 +119,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 		}
 
 		EndPaint(hwnd, &ps);
-		return 0;
-
-	case WM_SYSKEYDOWN:
-	case WM_SYSKEYUP:
-	case WM_SYSCHAR:
-	case WM_KEYDOWN:
-	case WM_KEYUP:
 		return 0;
 
 	case WM_DESTROY:
