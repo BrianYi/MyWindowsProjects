@@ -51,13 +51,12 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     static int  cLinesMax, cLines;
     static PMSG pmsg;
     static RECT rectScroll;
-    static TCHAR szTop[]    = TEXT ("Message        Key       Char     ")
-                              TEXT ("Repeat Scan Ext ALT Prev Tran") ;
-    static TCHAR szUnd[]    = TEXT ("_______        ___       ____     ")
-                              TEXT ("______ ____ ___ ___ ____ ____") ;
+    static TCHAR szTop[]    = TEXT ("Message        VirtualKeyValue    KeyName       Char     Repeat Scan Ext ALT Prev Tran") ;
+    static TCHAR szUnd[]    = TEXT ("_______        _______________    _______       ____     ______ ____ ___ ___ ____ ____") ;
     static TCHAR * szFormat[2] = { 
-        TEXT ("%-13s %3d %-15s%c%6u %4d %3s %3s %4s %4s"),
-        TEXT ("%-13s            0x%04X%1s%c %6u %4d %3s %3s %4s %4s") 
+		TEXT ("%-14s 0x%-16X %-22s%c%-6u %-4d %-3s %-3s %-4s %-4s"),
+        //TEXT ("%-13s %4d %-22s%c%6u %4d %3s %3s %4s %4s")//,
+        TEXT ("%-14s 0x%-16X %-14s%-9c%-6u %-4d %-3s %-3s %-4s %-4s") 
     };
     static TCHAR * szYes  = TEXT ("Yes") ;
     static TCHAR * szNo   = TEXT ("No") ;
@@ -145,7 +144,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
     case WM_PAINT:
         //hdc = GetDC(NULL);
         hdc = BeginPaint(hwnd, &ps);
-
         SelectObject(hdc, GetStockObject(SYSTEM_FIXED_FONT));
         SetBkMode(hdc, TRANSPARENT);
         TextOut(hdc, 0, 0, szTop, lstrlen(szTop));
