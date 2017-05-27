@@ -70,20 +70,19 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
 	HDC			hdc;
 	PAINTSTRUCT	ps;
-	TEXTMETRIC	tm;
 	static int	cxClient, cyClient, cxChar, cyChar, cxCaps;
 	static TCHAR szMatrix[] = TEXT("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
     static int  cMatrixSize = lstrlen(szMatrix);
 	static HFONT   hFont;
     int         cClientPos, cLen, i, j, r, g, b;
     static int  cMinLength = 5, cMaxLength = 50;
-    static list<MatrixData*>    listMatrixInfo;
+    static list<MatrixData*>   listMatrixInfo;
     bool        isRepick    = false;
 	switch (message) 
 	{
     case WM_TIMER:
         for (i = 1; i <= 15;) {
-            if (listMatrixInfo.size() >= cxClient / cxChar)
+            if (listMatrixInfo.size() >= (cxClient / cxChar))
                 break;
             cClientPos = rand() % (cxClient / cxChar);
             isRepick = false;
@@ -116,8 +115,8 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_CREATE:
 		hFont = CreateFont(20, 10, -900, 0, FW_MEDIUM, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, NULL);
         cxChar = 20, cyChar = 10;
-        cxClient    = GetSystemMetrics(SM_CXMAXIMIZED);
-        cyClient    = GetSystemMetrics(SM_CYMAXIMIZED);
+//         cxClient    = GetSystemMetrics(SM_CXMAXIMIZED);
+//         cyClient    = GetSystemMetrics(SM_CYMAXIMIZED);
 		return 0;
 
 	case WM_SIZE:
