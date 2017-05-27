@@ -52,7 +52,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	TEXTMETRIC	tm;
 	static int	cxClient, cyClient, cxChar, cyChar, cxCaps;
 	static TCHAR szChar[] = TEXT("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-	static TCHAR szMatrix[128];
+	static TCHAR szMatrix[256];
 	static int	cMatrixSize = sizeof(szMatrix) / sizeof(szMatrix[0]);
 	
 	switch (message) 
@@ -80,7 +80,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	case WM_PAINT:
 		hdc	= BeginPaint(hwnd, &ps);
-		//SelectObject(hdc, GetStockObject(SYSTEM_FIXED_FONT));
+		SelectObject(hdc, GetStockObject(SYSTEM_FIXED_FONT));
 		SetBkMode(hdc, TRANSPARENT);
 		for (int i = 1; i <= 30; i++) 
 		{
