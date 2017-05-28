@@ -39,6 +39,12 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C6)KeyView1", "KeyView1\Ke
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatrixDigitalRain", "MatrixDigitalRain\MatrixDigitalRain.vcxproj", "{8BC6FA3F-2506-4BBC-B665-4F20D812D39E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C6)StokFont", "StokFont\StokFont.vcxproj", "{ECC1D37F-EFE9-4A31-8D80-5DA034252E32}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C6)KeyView2", "KeyView2\KeyView2.vcxproj", "{B99B77FA-3484-49BA-85ED-8AB06B201E72}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C6)Typer", "Typer\Typer.vcxproj", "{3306EBAD-E6DE-4E0A-BCF9-9EA2891988E6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -121,6 +127,18 @@ Global
 		{8BC6FA3F-2506-4BBC-B665-4F20D812D39E}.Debug|Win32.Build.0 = Release|Win32
 		{8BC6FA3F-2506-4BBC-B665-4F20D812D39E}.Release|Win32.ActiveCfg = Release|Win32
 		{8BC6FA3F-2506-4BBC-B665-4F20D812D39E}.Release|Win32.Build.0 = Release|Win32
+		{ECC1D37F-EFE9-4A31-8D80-5DA034252E32}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ECC1D37F-EFE9-4A31-8D80-5DA034252E32}.Debug|Win32.Build.0 = Debug|Win32
+		{ECC1D37F-EFE9-4A31-8D80-5DA034252E32}.Release|Win32.ActiveCfg = Release|Win32
+		{ECC1D37F-EFE9-4A31-8D80-5DA034252E32}.Release|Win32.Build.0 = Release|Win32
+		{B99B77FA-3484-49BA-85ED-8AB06B201E72}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B99B77FA-3484-49BA-85ED-8AB06B201E72}.Debug|Win32.Build.0 = Debug|Win32
+		{B99B77FA-3484-49BA-85ED-8AB06B201E72}.Release|Win32.ActiveCfg = Release|Win32
+		{B99B77FA-3484-49BA-85ED-8AB06B201E72}.Release|Win32.Build.0 = Release|Win32
+		{3306EBAD-E6DE-4E0A-BCF9-9EA2891988E6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3306EBAD-E6DE-4E0A-BCF9-9EA2891988E6}.Debug|Win32.Build.0 = Debug|Win32
+		{3306EBAD-E6DE-4E0A-BCF9-9EA2891988E6}.Release|Win32.ActiveCfg = Release|Win32
+		{3306EBAD-E6DE-4E0A-BCF9-9EA2891988E6}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

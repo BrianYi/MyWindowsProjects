@@ -4,47 +4,47 @@ using std::list;
 LRESULT CALLBACK WndProc (HWND, UINT, WPARAM, LPARAM) ;
 
 int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
-	PSTR szCmdLine, int iCmdShow)
+    PSTR szCmdLine, int iCmdShow)
 {
-	static TCHAR szAppName[] = TEXT ("MatrixDigitalRain") ;
-	HWND         hwnd ;
-	MSG          msg ;
-	WNDCLASS     wndclass ;
+    static TCHAR szAppName[] = TEXT ("MatrixDigitalRain") ;
+    HWND         hwnd ;
+    MSG          msg ;
+    WNDCLASS     wndclass ;
 
-	wndclass.style         = CS_HREDRAW | CS_VREDRAW ;
-	wndclass.lpfnWndProc   = WndProc ;
-	wndclass.cbClsExtra    = 0 ;
-	wndclass.cbWndExtra    = 0 ;
-	wndclass.hInstance     = hInstance ;
-	wndclass.hIcon         = LoadIcon (NULL, IDI_APPLICATION) ;
-	wndclass.hCursor       = LoadCursor (NULL, IDC_ARROW) ;
-	wndclass.hbrBackground = (HBRUSH) GetStockObject (BLACK_BRUSH) ;
-	wndclass.lpszMenuName  = NULL ;
-	wndclass.lpszClassName = szAppName ;
+    wndclass.style         = CS_HREDRAW | CS_VREDRAW ;
+    wndclass.lpfnWndProc   = WndProc ;
+    wndclass.cbClsExtra    = 0 ;
+    wndclass.cbWndExtra    = 0 ;
+    wndclass.hInstance     = hInstance ;
+    wndclass.hIcon         = LoadIcon (NULL, IDI_APPLICATION) ;
+    wndclass.hCursor       = LoadCursor (NULL, IDC_ARROW) ;
+    wndclass.hbrBackground = (HBRUSH) GetStockObject (BLACK_BRUSH) ;
+    wndclass.lpszMenuName  = NULL ;
+    wndclass.lpszClassName = szAppName ;
 
-	if (!RegisterClass (&wndclass))
-	{
-		MessageBox (NULL, TEXT ("This program requires Windows NT!"), 
-			szAppName, MB_ICONERROR) ;
-		return 0 ;
-	}
+    if (!RegisterClass (&wndclass))
+    {
+        MessageBox (NULL, TEXT ("This program requires Windows NT!"), 
+            szAppName, MB_ICONERROR) ;
+        return 0 ;
+    }
 
-	hwnd = CreateWindow (szAppName, TEXT ("Keyboard Message Viewer #1"),
-		WS_OVERLAPPEDWINDOW,
-		CW_USEDEFAULT, CW_USEDEFAULT,
-		CW_USEDEFAULT, CW_USEDEFAULT,
-		NULL, NULL, hInstance, NULL) ;
+    hwnd = CreateWindow (szAppName, TEXT ("Matrix Digital Rain"),
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        CW_USEDEFAULT, CW_USEDEFAULT,
+        NULL, NULL, hInstance, NULL) ;
 
-	ShowWindow (hwnd, iCmdShow) ;
-	UpdateWindow (hwnd) ;
+    ShowWindow (hwnd, iCmdShow) ;
+    UpdateWindow (hwnd) ;
     SetTimer(hwnd, 1, 10, NULL);
     srand(GetCurrentTime());
-	while (GetMessage (&msg, NULL, 0, 0))
-	{
-		TranslateMessage (&msg) ;
-		DispatchMessage (&msg) ;
-	}
-	return msg.wParam ;
+    while (GetMessage (&msg, NULL, 0, 0))
+    {
+        TranslateMessage (&msg) ;
+        DispatchMessage (&msg) ;
+    }
+    return msg.wParam ;
 }
 
 struct MatrixData
@@ -68,18 +68,20 @@ struct MatrixData
 
 LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	HDC			hdc;
-	PAINTSTRUCT	ps;
-	static int	cxClient, cyClient, cxChar, cyChar, cxCaps;
-	static TCHAR szMatrix[] = TEXT("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
+    HDC			hdc;
+    PAINTSTRUCT	ps;
+    TEXTMETRIC  tm;
+    static int	cxClient, cyClient, cxChar, cyChar, cxCaps;
+    static TCHAR szMatrix[] = TEXT("ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789");
     static int  cMatrixSize = lstrlen(szMatrix);
-	static HFONT   hFont;
+    static HFONT   hFont;
     int         cClientPos, cLen, i, j, r, g, b;
     static int  cMinLength = 5, cMaxLength = 50;
     static list<MatrixData*>   listMatrixInfo;
     bool        isRepick    = false;
-	switch (message) 
-	{
+    static bool isSecond    = false;
+    switch (message) 
+    {
     case WM_TIMER:
         for (i = 1; i <= 15;) {
             if (listMatrixInfo.size() >= (cxClient / cxChar))
@@ -112,22 +114,60 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         ScrollWindow(hwnd, 0, cyChar, NULL, NULL);
         return 0;
 
-	case WM_CREATE:
-		hFont = CreateFont(20, 10, -900, 0, FW_MEDIUM, FALSE, FALSE, FALSE, DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, NULL);
-        cxChar = 20, cyChar = 10;
-//         cxClient    = GetSystemMetrics(SM_CXMAXIMIZED);
-//         cyClient    = GetSystemMetrics(SM_CYMAXIMIZED);
-		return 0;
+    case WM_CREATE:
+        hFont = CreateFont(cxChar, cyChar, -900, 0, FW_HEAVY, FALSE, FALSE, FALSE, GB2312_CHARSET, OUT_CHARACTER_PRECIS, CLIP_CHARACTER_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, NULL);
+        hdc = GetDC (hwnd) ;
+        SelectObject(hdc, hFont);
+        GetTextMetrics (hdc, &tm) ;
+        cxChar =  tm.tmHeight;
+        cyChar = tm.tmAveCharWidth ;
+        ReleaseDC (hwnd, hdc) ;
+        //         cxClient    = GetSystemMetrics(SM_CXMAXIMIZED);
+        //         cyClient    = GetSystemMetrics(SM_CYMAXIMIZED);
+        return 0;
 
-	case WM_SIZE:
-		cxClient	= LOWORD(lParam);
-		cyClient	= HIWORD(lParam);
-		return 0;
+    case WM_SIZE:
+        cxClient	= LOWORD(lParam);
+        cyClient	= HIWORD(lParam);
+        return 0;
 
-	case WM_PAINT:
-		hdc	= BeginPaint(hwnd, &ps);
-		SelectObject(hdc, hFont);
- 		SetBkMode(hdc, TRANSPARENT);
+    case WM_KEYDOWN:
+        if (wParam == VK_SPACE) 
+        {
+            if (isSecond) {
+                SetTimer(hwnd, 1, 10, NULL);
+                isSecond    = false;
+            } else {
+                KillTimer(hwnd, 1);
+                isSecond    = true;
+            }
+        } else if (wParam == VK_UP)  {
+            cxChar += 2;
+            cyChar += 2;
+            DeleteObject(hFont);
+            hFont   = CreateFont(cxChar, cyChar, -900, 0, FW_HEAVY, FALSE, 
+                FALSE, FALSE, DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, 
+                CLIP_CHARACTER_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, NULL);
+        } else if (wParam == VK_DOWN) {
+            cxChar -= 2;
+            cyChar -= 2;
+            if (cxChar <= 0 || cyChar <= 0)  {
+                cxChar += 2;
+                cyChar += 2;
+            }
+            DeleteObject(hFont);
+            hFont   = CreateFont(cxChar, cyChar, -900, 0, FW_HEAVY, FALSE, 
+                FALSE, FALSE, DEFAULT_CHARSET, OUT_CHARACTER_PRECIS, 
+                CLIP_CHARACTER_PRECIS, CLEARTYPE_QUALITY, FF_DONTCARE, NULL);
+        }
+
+
+        return 0;
+
+    case WM_PAINT:
+        hdc	= BeginPaint(hwnd, &ps);
+        SelectObject(hdc, hFont);
+        SetBkMode(hdc, TRANSPARENT);
         for (auto it = listMatrixInfo.begin(); it != listMatrixInfo.end(); ) 
         {
             MatrixData *matrix = *it;
@@ -137,7 +177,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
                 r   = (matrix->cLen - matrix->cPos) * 255.0 / matrix->cLen;
                 g   = 255;
                 b   = r;
-                
             }
             else 
             {
@@ -151,21 +190,21 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
             // del matrix
             matrix->cPos++;
             if (matrix->cPos == matrix->cLen) 
-             {
-                 free(*it);
-                 it = listMatrixInfo.erase(it);
+            {
+                free(*it);
+                it = listMatrixInfo.erase(it);
             }
-             else 
-            	it++;
+            else 
+                it++;
         }
-		EndPaint(hwnd, &ps);
-		return 0;
+        EndPaint(hwnd, &ps);
+        return 0;
 
-	case WM_DESTROY:
-		PostQuitMessage(0);
-		return 0;
-	default:
-		break;
-	}
-	return DefWindowProc(hwnd, message, wParam, lParam);
+    case WM_DESTROY:
+        PostQuitMessage(0);
+        return 0;
+    default:
+        break;
+    }
+    return DefWindowProc(hwnd, message, wParam, lParam);
 }
