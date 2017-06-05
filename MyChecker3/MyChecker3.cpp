@@ -66,7 +66,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 					WS_CHILDWINDOW | WS_VISIBLE,
 					0, 0, 0, 0, 
 					hwnd, (HMENU)(y << 8 | x),
-					(HINSTANCE)GetWindowLongPtr(hwnd, GWL_HINSTANCE),
+					(HINSTANCE)GetWindowLongPtr(hwnd, GWLP_HINSTANCE),
 					NULL);
 			}
 		}
