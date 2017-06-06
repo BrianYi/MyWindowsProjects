@@ -49,9 +49,10 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
 
 LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    static int  cxChar, cxCaps, cyChar, cxClient, cyClient, iMaxWidth;
+    static int  cxChar, cxCaps, cyChar, cxClient, cyClient, iMaxWidth, iDeltaPerLine;
     HDC         hdc;
-    int         i, x, y, iVertPos, iHorzPos, iPaintBeg, iPaintEnd;
+    int         i, x, y, iVertPos, iHorzPos, iPaintBeg, iPaintEnd, iAccuDelta;
+	unsigned int	uParam;
     PAINTSTRUCT ps;
     SCROLLINFO  si;
     TCHAR       szBuffer[10];
@@ -70,8 +71,26 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         ReleaseDC(hwnd, hdc);
 
         iMaxWidth   = 40 * cxChar + 22 * cxCaps;
-
+	case WM_SETTINGCHANGE:
+		SystemParametersInfo(SPI_GETWHEELSCROLLLINES, 0, &uParam, 0);
+		if (uParam) {
+			iDeltaPerLine	= WHEEL_DELTA / uParam;
+		} else {
+			iDeltaPerLine	= 0;
+		}
         return 0;
+
+	case WM_MOUSEWHEEL:
+		iAccuDelta	= GET_WHEEL_DELTA_WPARAM(wParam);
+		while (iAccuDelta <= -iDeltaPerLine) {
+			SendMessage(hwnd, WM_VSCROLL, SB_LINEDOWN, 0);
+			iAccuDelta	+= iDeltaPerLine;
+		}
+		while (iAccuDelta >= iDeltaPerLine) {
+			SendMessage(hwnd, WM_VSCROLL, SB_LINEUP, 0);
+			iAccuDelta	-= iDeltaPerLine;
+		}
+		return 0;
 
     case WM_SIZE:
         cxClient    = LOWORD(lParam);

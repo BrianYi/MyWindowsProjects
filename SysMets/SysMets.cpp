@@ -233,7 +233,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 			break;
 		}
 
-		iAccumDelta	+= (short) HIWORD(wParam);
+		iAccumDelta	+= /*(short) HIWORD(wParam)*/GET_WHEEL_DELTA_WPARAM(wParam);
 
 		while (iAccumDelta >= iDeltaPerLine) {
 			SendMessage(hwnd, WM_VSCROLL, SB_LINEUP, 0);
