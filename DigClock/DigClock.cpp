@@ -68,13 +68,13 @@ void DisplayDigit (HDC hdc, int iNumber)
 	//
 	//  00:00:00 => 6¸öÎ»ÖÃ
 	static POINT ptSegment [7][6] = {
-		7,   6,  11,  2,  31,  2,  35,  6,  31, 10,  11, 10,
-		6,   7,  10, 11,  10, 31,   6, 35,   2, 31,   2, 11,
-		36,  7,  40, 11,  40, 31,  36, 35,  32, 31,  32, 11,
-		7,  36,  11, 32,  31, 32,  35, 36,  31, 40,  11, 40,
-		6,  37,  10, 41,  10, 61,   6, 65,   2, 61,   2, 41,
-		36, 37,  40, 41,  40, 61,  36, 65,  32, 61,  32, 41,
-		7,  66,  11, 62,  31, 62,  35, 66,  31, 70,  11, 70 
+		7,   6,  11,  2,  31,  2,  35,  6,  31, 10,  11, 10,    //  _
+		6,   7,  10, 11,  10, 31,   6, 35,   2, 31,   2, 11,    // |
+		36,  7,  40, 11,  40, 31,  36, 35,  32, 31,  32, 11,    //   |
+		7,  36,  11, 32,  31, 32,  35, 36,  31, 40,  11, 40,    //  _
+		6,  37,  10, 41,  10, 61,   6, 65,   2, 61,   2, 41,    // |
+		36, 37,  40, 41,  40, 61,  36, 65,  32, 61,  32, 41,    //   |
+		7,  66,  11, 62,  31, 62,  35, 66,  31, 70,  11, 70     //  _
 	};
 	int iSeg;
 	for (iSeg = 0; iSeg < 7; iSeg++) {
@@ -124,7 +124,7 @@ void DisplayTime(HDC hdc, BOOL f24Hour, BOOL fSuppress)
 	DisplayTwoDigits(hdc, st.wMinute, FALSE);
 	DisplayColon(hdc);
 	DisplayTwoDigits(hdc, st.wSecond, FALSE);
-}
+    }
 
 LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
