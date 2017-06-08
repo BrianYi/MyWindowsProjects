@@ -66,7 +66,10 @@ void RotatePoint (POINT pt[], int iNum, int iAngle)
 {
 	int i;
 	POINT ptTemp;
-
+	//*******************************
+	// 点(x,y)旋转公式 => 旋转后的点(x',y')
+	// x' = x * cosθ + y * sinθ
+	// y' = y * cosθ + x * sinθ
 	for (i = 0; i < iNum; i++) {
 		ptTemp.x	= (int)(pt[i].x * cos(TWOPI * iAngle / 360) +
 			pt[i].y * sin(TWOPI * iAngle / 360));
@@ -105,9 +108,9 @@ void DrawClock (HDC hdc)
 
 void DrawHands (HDC hdc, SYSTEMTIME * pst, BOOL fChange)
 {
-	static POINT	pt[3][5]	= { 0, -150, 100, 0, 0, 600, -100, 0, 0, -150,
-									0, -200,  50, 0, 0, 800,  -50, 0, 0, -200,
-									0,	  0,   0, 0, 0,   0,    0, 0, 0,  800 };
+	static POINT	pt[3][5]	= { 0, -150, 100, 0, 0, 600, -100, 0, 0, -150,	// hour指针向上时的点位置
+									0, -200,  50, 0, 0, 800,  -50, 0, 0, -200,	// minute指针向上时的点位置
+									0,	  0,   0, 0, 0,   0,    0, 0, 0,  800 };	// second指针向上时的点位置
 	int		i, iAngle[3];
 	POINT	ptTemp[3][5];
 
@@ -153,10 +156,10 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		SetIsotropic(hdc, cxClient, cyClient);
 
 		SelectObject(hdc, GetStockObject(WHITE_PEN));
-		DrawHands(hdc, &stPrevious, fChange);
+		DrawHands(hdc, &stPrevious, fChange);	// 擦出之前绘制的hands
 
 		SelectObject(hdc, GetStockObject(BLACK_PEN));
-		DrawHands(hdc, &st, TRUE);
+		DrawHands(hdc, &st, TRUE);	// 绘制新的hands
 
 		ReleaseDC(hwnd, hdc);
 

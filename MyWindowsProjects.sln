@@ -81,6 +81,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C8)Clock", "Clock\Clock.vc
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C8)DigClock", "DigClock\DigClock.vcxproj", "{435E0689-C6D1-41A8-AD79-8E1C00F62649}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyDigClock", "MyDigClock\MyDigClock.vcxproj", "{A6D27378-DA77-4487-830B-101B3A0C7FB4}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C8)WhatClr", "WhatClr\WhatClr.vcxproj", "{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -247,6 +251,14 @@ Global
 		{435E0689-C6D1-41A8-AD79-8E1C00F62649}.Debug|Win32.Build.0 = Debug|Win32
 		{435E0689-C6D1-41A8-AD79-8E1C00F62649}.Release|Win32.ActiveCfg = Release|Win32
 		{435E0689-C6D1-41A8-AD79-8E1C00F62649}.Release|Win32.Build.0 = Release|Win32
+		{A6D27378-DA77-4487-830B-101B3A0C7FB4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A6D27378-DA77-4487-830B-101B3A0C7FB4}.Debug|Win32.Build.0 = Debug|Win32
+		{A6D27378-DA77-4487-830B-101B3A0C7FB4}.Release|Win32.ActiveCfg = Release|Win32
+		{A6D27378-DA77-4487-830B-101B3A0C7FB4}.Release|Win32.Build.0 = Release|Win32
+		{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}.Debug|Win32.Build.0 = Debug|Win32
+		{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}.Release|Win32.ActiveCfg = Release|Win32
+		{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
