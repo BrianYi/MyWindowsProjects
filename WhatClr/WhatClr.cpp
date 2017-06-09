@@ -55,7 +55,8 @@ void FindWindowSize (int * pcxWindow, int * pcyWindow)
 {
 	HDC			hdcScreen;
 	TEXTMETRIC	tm;
-
+	//*******************************
+	// Create an Information Context for the specified device
 	hdcScreen	= CreateIC(TEXT("DISPLAY"), NULL, NULL, NULL);
 	GetTextMetrics(hdcScreen, &tm);
 	DeleteDC(hdcScreen);

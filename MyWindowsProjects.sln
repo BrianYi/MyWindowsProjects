@@ -85,6 +85,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyDigClock", "MyDigClock\My
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C8)WhatClr", "WhatClr\WhatClr.vcxproj", "{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)BtnLook", "BtnLook\BtnLook.vcxproj", "{790BB2F3-861B-4FF9-9FA9-F5A12EB7B18A}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyBtnLook", "MyBtnLook\MyBtnLook.vcxproj", "{DFBE0511-F064-4DA0-9DDD-306478B1356B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -259,6 +263,14 @@ Global
 		{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}.Debug|Win32.Build.0 = Debug|Win32
 		{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}.Release|Win32.ActiveCfg = Release|Win32
 		{DDBA26EB-DE5A-4A4C-9A35-B2985B79B86E}.Release|Win32.Build.0 = Release|Win32
+		{790BB2F3-861B-4FF9-9FA9-F5A12EB7B18A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{790BB2F3-861B-4FF9-9FA9-F5A12EB7B18A}.Debug|Win32.Build.0 = Debug|Win32
+		{790BB2F3-861B-4FF9-9FA9-F5A12EB7B18A}.Release|Win32.ActiveCfg = Release|Win32
+		{790BB2F3-861B-4FF9-9FA9-F5A12EB7B18A}.Release|Win32.Build.0 = Release|Win32
+		{DFBE0511-F064-4DA0-9DDD-306478B1356B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DFBE0511-F064-4DA0-9DDD-306478B1356B}.Debug|Win32.Build.0 = Debug|Win32
+		{DFBE0511-F064-4DA0-9DDD-306478B1356B}.Release|Win32.ActiveCfg = Release|Win32
+		{DFBE0511-F064-4DA0-9DDD-306478B1356B}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
