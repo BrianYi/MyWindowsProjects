@@ -89,6 +89,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)BtnLook", "BtnLook\BtnL
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyBtnLook", "MyBtnLook\MyBtnLook.vcxproj", "{DFBE0511-F064-4DA0-9DDD-306478B1356B}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)OwnDraw", "OwnDraw\OwnDraw.vcxproj", "{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -271,6 +273,10 @@ Global
 		{DFBE0511-F064-4DA0-9DDD-306478B1356B}.Debug|Win32.Build.0 = Debug|Win32
 		{DFBE0511-F064-4DA0-9DDD-306478B1356B}.Release|Win32.ActiveCfg = Release|Win32
 		{DFBE0511-F064-4DA0-9DDD-306478B1356B}.Release|Win32.Build.0 = Release|Win32
+		{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}.Debug|Win32.Build.0 = Debug|Win32
+		{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}.Release|Win32.ActiveCfg = Release|Win32
+		{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

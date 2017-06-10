@@ -38,7 +38,7 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
 	wndclass.hInstance     = hInstance ;
 	wndclass.hIcon         = LoadIcon (NULL, IDI_APPLICATION) ;
 	wndclass.hCursor       = LoadCursor (NULL, IDC_ARROW) ;
-	wndclass.hbrBackground = (HBRUSH) GetStockObject (WHITE_BRUSH) ;
+	wndclass.hbrBackground = (HBRUSH) (COLOR_BTNFACE+1)/*GetStockObject (WHITE_BRUSH)*/ ;
 	wndclass.lpszMenuName  = NULL ;
 	wndclass.lpszClassName = szAppName ;
 
@@ -103,6 +103,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	case WM_DRAWITEM:
 		ScrollWindow(hwnd, 0, -cyChar, &rect, &rect);
 		hdc	= GetDC(hwnd);
+		SetBkColor(hdc, GetSysColor(COLOR_BTNFACE));
 		SelectObject(hdc, GetStockObject(SYSTEM_FIXED_FONT));
 		TextOut(hdc, 24 *cxChar, cyChar * (rect.bottom / cyChar - 1),
 			szBuffer, wsprintf(szBuffer, szFormat, message == WM_DRAWITEM ? 
