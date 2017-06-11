@@ -91,6 +91,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyBtnLook", "MyBtnLook\MyBt
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)OwnDraw", "OwnDraw\OwnDraw.vcxproj", "{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyOwnDraw", "MyOwnDraw\MyOwnDraw.vcxproj", "{23D5B5F5-86C9-41FF-A080-0BB7F1523A00}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)Colors1", "Colors1\Colors1.vcxproj", "{7A4D49E9-8918-4DD1-87E6-E8339E4BF3E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -277,6 +281,14 @@ Global
 		{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}.Debug|Win32.Build.0 = Debug|Win32
 		{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}.Release|Win32.ActiveCfg = Release|Win32
 		{0B9C4AE3-1D64-4194-BAE7-74CCFE851066}.Release|Win32.Build.0 = Release|Win32
+		{23D5B5F5-86C9-41FF-A080-0BB7F1523A00}.Debug|Win32.ActiveCfg = Debug|Win32
+		{23D5B5F5-86C9-41FF-A080-0BB7F1523A00}.Debug|Win32.Build.0 = Debug|Win32
+		{23D5B5F5-86C9-41FF-A080-0BB7F1523A00}.Release|Win32.ActiveCfg = Release|Win32
+		{23D5B5F5-86C9-41FF-A080-0BB7F1523A00}.Release|Win32.Build.0 = Release|Win32
+		{7A4D49E9-8918-4DD1-87E6-E8339E4BF3E4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7A4D49E9-8918-4DD1-87E6-E8339E4BF3E4}.Debug|Win32.Build.0 = Debug|Win32
+		{7A4D49E9-8918-4DD1-87E6-E8339E4BF3E4}.Release|Win32.ActiveCfg = Release|Win32
+		{7A4D49E9-8918-4DD1-87E6-E8339E4BF3E4}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

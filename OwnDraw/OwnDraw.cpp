@@ -65,7 +65,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int              cx, cy ;
 	LPDRAWITEMSTRUCT pdis ;
 	RECT             rc ;
-
 	switch (message) 
 	{
 	case WM_CREATE:
@@ -84,7 +83,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 								   hwnd, (HMENU) ID_LARGER,
 								   ((LPCREATESTRUCT)lParam)->hInstance, NULL);
 		return 0;
-
 	case WM_SIZE:
 		cxClient	= LOWORD(lParam);
 		cyClient	= HIWORD(lParam);
