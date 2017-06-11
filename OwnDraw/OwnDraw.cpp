@@ -64,7 +64,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	static int       cxClient, cyClient, cxChar, cyChar ;
 	int              cx, cy ;
 	LPDRAWITEMSTRUCT pdis ;
-	POINT            pt[3] ;
 	RECT             rc ;
 
 	switch (message) 
