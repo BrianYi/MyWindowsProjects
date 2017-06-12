@@ -115,7 +115,8 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 		EndPaint(hwnd, &ps);
 		return 0;
-
+	case WM_CTLCOLORBTN:
+		return (LRESULT)CreateSolidBrush(RGB(255,0,0));
 	case WM_DRAWITEM:
 	case WM_COMMAND:
 		ScrollWindow(hwnd, 0, -cyChar, &rect, &rect);
