@@ -76,7 +76,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		for (i = 0; i < 3; i++) 
 		{
 			// 0~2 scrollbar
-			hwndScroll[i] = CreateWindow(TEXT("SCROLLBAR"), NULL, WS_VISIBLE | WS_CHILD | SBS_VERT,
+			hwndScroll[i] = CreateWindow(TEXT("SCROLLBAR"), NULL, WS_VISIBLE | WS_CHILD | SBS_VERT | WS_TABSTOP,
 									0, 0, 0, 0, hwnd, (HMENU)i, hInstance, NULL);
 			SetScrollRange(hwndScroll[i], SB_CTL, 0, 255, TRUE);
 			SetScrollPos(hwndScroll[i], SB_CTL, 0, TRUE);
@@ -91,6 +91,8 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 			hBrush[i] = CreateSolidBrush(crPrim[i]);
 
+            //*******************************
+            // 设置新的WNDPPROC，存储旧的WNDPROC到OldScroll
 			OldScroll[i] = (WNDPROC)SetWindowLongPtr(hwndScroll[i], GWLP_WNDPROC, (LONG)ScrollProc);
 		}
 		return 0;
@@ -118,7 +120,8 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 
 	case WM_CTLCOLORSTATIC:
-		i = GetWindowLongPtr((HWND)lParam, GWLP_ID);
+		//i = GetWindowLongPtr((HWND)lParam, GWLP_ID);
+        i = GetDlgCtrlID((HWND)lParam);
 		if (i >= 3 && i <= 8)
 		{
 			SetTextColor((HDC)wParam, crPrim[i % 3]);
@@ -128,7 +131,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_CTLCOLORSCROLLBAR:
-		i = GetWindowLongPtr((HWND)lParam, GWLP_ID);
+		i = GetDlgCtrlID((HWND)lParam);
 		if (i >= 0 && i <= 2) 
 		{
 			return (LRESULT)hBrush[i];
@@ -136,7 +139,8 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		break;
 
 	case WM_VSCROLL:
-		i = GetWindowLongPtr((HWND)lParam, GWLP_ID);
+		/*i = GetWindowLongPtr((HWND)lParam, GWLP_ID);*/
+        i = GetDlgCtrlID((HWND)lParam);
 		switch (LOWORD(wParam)) 
 		{
 		case SB_LINEDOWN:
@@ -190,7 +194,9 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 LRESULT CALLBACK ScrollProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-	int id = GetWindowLongPtr(hwnd, GWLP_ID);
+	//int id = GetWindowLongPtr(hwnd, GWLP_ID);
+    int id = GetDlgCtrlID(hwnd);
+
 	switch (message) 
 	{
 	case WM_KEYDOWN:
