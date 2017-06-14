@@ -53,31 +53,24 @@ int FillListBox (HWND hwndList)
 	int iLength, iMaxLength = 0;
 	TCHAR *pEnvironStrings, *pVarBlock, *pVarBeg, *pVarEnd, *pVarName;
 
-	pEnvironStrings = GetEnvironmentStrings();	// Get pointer to environment block
+	pEnvironStrings = GetEnvironmentStrings();
 	pVarBlock = pEnvironStrings;
 	while (*pVarBlock) 
 	{
-		if (*pVarBlock != '=')	// Skip variable names beginning with '='
+		if (*pVarBlock != '=')
 		{
-			pVarBeg = pVarBlock;			// Beginning of variable name
-			while (*pVarBlock++ != '=') ;	// Scan until '='
-			pVarEnd = pVarBlock - 1;		// Points to '=' sign
-			iLength = pVarEnd - pVarBeg;	// Length of variable name
+			pVarBeg = pVarBlock;
+			while (*pVarBlock++ != '=') ;
+			pVarEnd = pVarBlock - 1;
+			iLength = pVarEnd - pVarBeg;
 			iMaxLength = max(iMaxLength, iLength);
-
-				// Allocate memory for the variable name and terminating
-				// zero. Copy the variable name and append a zero.
-
-			pVarName = (TCHAR *)malloc((iLength + 1) * sizeof(TCHAR));
-			CopyMemory(pVarName, pVarBeg, iLength * sizeof(TCHAR));
+			pVarName = (TCHAR *)malloc(sizeof(TCHAR) * (iLength + 1));
+			CopyMemory(pVarName, pVarBeg, sizeof(TCHAR) * iLength);
 			pVarName[iLength] = '\0';
-
-				// Put the variable name in the list box and free memory.
-
 			SendMessage(hwndList, LB_ADDSTRING, 0, (LPARAM)pVarName);
 			free (pVarName);
 		}
-		while (*pVarBlock++);	// Scan until terminating zero
+		while(*pVarBlock++);
 	}
 	FreeEnvironmentStrings(pEnvironStrings);
 	return iMaxLength;
@@ -89,67 +82,54 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 	int          iIndex, iLength, cxChar, cyChar ;
 	TCHAR      * pVarName, * pVarValue ;
 	static int   iMaxLength;
+
 	switch (message) 
 	{
 	case WM_CREATE:
+
 		hwndList = CreateWindow(TEXT("LISTBOX"), NULL,
 						WS_CHILD | WS_VISIBLE | LBS_STANDARD,
-						0, 0, 0, 0, 
-						hwnd, (HMENU) ID_LIST,
-						(HINSTANCE) GetWindowLongPtr(hwnd, GWLP_HINSTANCE),
-						NULL);
+						0, 0, 0, 0,
+						hwnd, (HMENU)ID_LIST,
+						((LPCREATESTRUCT)lParam)->hInstance, NULL);
 
 		hwndText = CreateWindow(TEXT("STATIC"), NULL,
 						WS_CHILD | WS_VISIBLE | SS_LEFT,
 						0, 0, 0, 0,
-						hwnd, (HMENU) ID_TEXT,
-						(HINSTANCE) GetWindowLongPtr(hwnd, GWLP_HINSTANCE),
-						NULL);
+						hwnd, (HMENU)ID_TEXT,
+						((LPCREATESTRUCT)lParam)->hInstance, NULL);
 
 		iMaxLength = FillListBox(hwndList);
 		return 0;
-
 	case WM_SIZE:
-		
+
 		cxChar = LOWORD(GetDialogBaseUnits());
 		cyChar = HIWORD(GetDialogBaseUnits());
 
-		MoveWindow(hwndList, cxChar, cyChar * 3, 
-			iMaxLength * cxChar + GetSystemMetrics(SM_CXVSCROLL), 
-			cyChar * 6, TRUE);
+		MoveWindow(hwndList, cxChar, cyChar * 3,
+			cxChar * iMaxLength + GetSystemMetrics(SM_CXVSCROLL), cyChar * 6, TRUE);
 
 		MoveWindow(hwndText, cxChar, cyChar,
-			GetSystemMetrics(SM_CXSCREEN), cyChar, TRUE);
-		return 0;
+			LOWORD(lParam), cyChar, TRUE);
 
-	case WM_SETFOCUS:
-		SetFocus(hwndList);
 		return 0;
-
 	case WM_COMMAND:
 		if (LOWORD(wParam) == ID_LIST && HIWORD(wParam) == LBN_SELCHANGE) 
 		{
-				// Scan until terminating zero
-
 			iIndex = SendMessage(hwndList, LB_GETCURSEL, 0, 0);
-			iLength = SendMessage(hwndList, LB_GETTEXTLEN, iIndex, 0) + 1;
-			pVarName = (TCHAR *)malloc(iLength * sizeof(TCHAR));
+			iLength = SendMessage(hwndList, LB_GETTEXTLEN, iIndex, 0);
+			pVarName = (TCHAR *)malloc(sizeof(TCHAR) * (iLength + 1));
 			SendMessage(hwndList, LB_GETTEXT, iIndex, (LPARAM)pVarName);
+			//pVarName[iLength] = '\0';
 
-				// Get environment string.
-
-			iLength = GetEnvironmentVariable(pVarName, NULL, 0);
-			pVarValue = (TCHAR *)malloc(iLength * sizeof(TCHAR));
+			iLength = GetEnvironmentVariable(pVarName, 0, 0);
+			pVarValue = (TCHAR *)malloc(sizeof(TCHAR) * (iLength));
 			GetEnvironmentVariable(pVarName, pVarValue, iLength);
-
-				// Show it in window.
-
 			SetWindowText(hwndText, pVarValue);
 			free (pVarName);
 			free (pVarValue);
 		}
 		return 0;
-		
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		return 0;

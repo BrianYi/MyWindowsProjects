@@ -97,9 +97,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)Colors1", "Colors1\Colo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyColors1", "MyColors1\MyColors1.vcxproj", "{BAABDA15-6B2D-4994-B7E4-87A63FE1620C}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PopPad1", "PopPad1\PopPad1.vcxproj", "{B29C0C64-F13D-4BE7-957E-F582CD5D8EA0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)PopPad1", "PopPad1\PopPad1.vcxproj", "{B29C0C64-F13D-4BE7-957E-F582CD5D8EA0}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)Environ", "Environ\Environ.vcxproj", "{8AA59735-8D69-4085-9B6E-8A4CC62E9225}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyEnviron", "MyEnviron\MyEnviron.vcxproj", "{0E3A251E-8F20-4741-8615-95F40FEF8BDD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)Head", "Head\Head.vcxproj", "{7EB31F3D-CB31-4607-A937-664B36EF4528}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -307,6 +311,14 @@ Global
 		{8AA59735-8D69-4085-9B6E-8A4CC62E9225}.Debug|Win32.Build.0 = Debug|Win32
 		{8AA59735-8D69-4085-9B6E-8A4CC62E9225}.Release|Win32.ActiveCfg = Release|Win32
 		{8AA59735-8D69-4085-9B6E-8A4CC62E9225}.Release|Win32.Build.0 = Release|Win32
+		{0E3A251E-8F20-4741-8615-95F40FEF8BDD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0E3A251E-8F20-4741-8615-95F40FEF8BDD}.Debug|Win32.Build.0 = Debug|Win32
+		{0E3A251E-8F20-4741-8615-95F40FEF8BDD}.Release|Win32.ActiveCfg = Release|Win32
+		{0E3A251E-8F20-4741-8615-95F40FEF8BDD}.Release|Win32.Build.0 = Release|Win32
+		{7EB31F3D-CB31-4607-A937-664B36EF4528}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7EB31F3D-CB31-4607-A937-664B36EF4528}.Debug|Win32.Build.0 = Debug|Win32
+		{7EB31F3D-CB31-4607-A937-664B36EF4528}.Release|Win32.ActiveCfg = Release|Win32
+		{7EB31F3D-CB31-4607-A937-664B36EF4528}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{B29C0C64-F13D-4BE7-957E-F582CD5D8EA0}</ProjectGuid>
+    <ProjectGuid>{7EB31F3D-CB31-4607-A937-664B36EF4528}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>PopPad1</RootNamespace>
-    <ProjectName>(C9)PopPad1</ProjectName>
+    <RootNamespace>Head</RootNamespace>
+    <ProjectName>(C9)Head</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -75,7 +75,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="PopPad1.cpp" />
+    <ClCompile Include="Head.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
