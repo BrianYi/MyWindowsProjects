@@ -1,6 +1,7 @@
 #include <windows.h>
 
 #define ID_LIST     1
+
 #define ID_TEXT     2
 
 #define MAXREAD		8192
