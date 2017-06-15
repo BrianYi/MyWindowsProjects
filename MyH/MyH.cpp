@@ -131,6 +131,7 @@ LRESULT CALLBACK ReaderProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lPar
 		if (bValidFile)
 		{
 			DeleteObject(SelectObject(hdc, GetStockObject(SYSTEM_FIXED_FONT)));
+            //SetBkMode(hdc, OPAQUE);
 			SetBkColor(hdc, GetSysColor(COLOR_BTNFACE));
 			SetTextColor(hdc, GetSysColor(COLOR_BTNTEXT));
 			BYTE **pbByteArry;
