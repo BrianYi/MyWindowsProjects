@@ -107,9 +107,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "(C9)Head", "Head\Head.vcxpr
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyH", "MyH\MyH.vcxproj", "{A93DC34F-8624-432A-8A5A-4DF370AEF4A7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyEncrypt", "MyTest\MyTest.vcxproj", "{FDED9224-EFD1-4832-AF0B-41F24413ED05}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyEncrypt", "MyEncrypt\MyEncrypt.vcxproj", "{FDED9224-EFD1-4832-AF0B-41F24413ED05}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyDecrypt", "MyDecrypt\MyDecrypt.vcxproj", "{7B2C258E-2F0B-4030-A3F1-6A8A52720FAC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Win32Console", "Win32Console\Win32Console.vcxproj", "{DF24B333-AAE8-4AE8-A6BA-8A176C6677A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -337,6 +339,10 @@ Global
 		{7B2C258E-2F0B-4030-A3F1-6A8A52720FAC}.Debug|Win32.Build.0 = Debug|Win32
 		{7B2C258E-2F0B-4030-A3F1-6A8A52720FAC}.Release|Win32.ActiveCfg = Release|Win32
 		{7B2C258E-2F0B-4030-A3F1-6A8A52720FAC}.Release|Win32.Build.0 = Release|Win32
+		{DF24B333-AAE8-4AE8-A6BA-8A176C6677A1}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DF24B333-AAE8-4AE8-A6BA-8A176C6677A1}.Debug|Win32.Build.0 = Debug|Win32
+		{DF24B333-AAE8-4AE8-A6BA-8A176C6677A1}.Release|Win32.ActiveCfg = Release|Win32
+		{DF24B333-AAE8-4AE8-A6BA-8A176C6677A1}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,10 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{FDED9224-EFD1-4832-AF0B-41F24413ED05}</ProjectGuid>
+    <ProjectGuid>{DF24B333-AAE8-4AE8-A6BA-8A176C6677A1}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MyTest</RootNamespace>
-    <ProjectName>MyEncrypt</ProjectName>
+    <RootNamespace>Win32Console</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -40,6 +39,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>../$(ProjectName)/bin/$(ProjectName)</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
