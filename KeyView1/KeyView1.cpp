@@ -148,7 +148,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         SetBkMode(hdc, TRANSPARENT);
         TextOut(hdc, 0, 0, szTop, lstrlen(szTop));
         TextOut(hdc, 0, 0, szUnd, lstrlen(szUnd));
-
         for (i = 0; i < min(cLines, cyClient / cyChar - 1); i++) 
         {
             iType   = pmsg[i].message   == WM_CHAR ||

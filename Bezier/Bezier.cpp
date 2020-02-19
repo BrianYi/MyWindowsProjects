@@ -121,7 +121,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
         return 0;
 
     case WM_PAINT:
-        InvalidateRect(hwnd, NULL, TRUE);
+        //InvalidateRect(hwnd, NULL, TRUE);
 
         hdc = BeginPaint(hwnd, &ps);
 		

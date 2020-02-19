@@ -95,7 +95,6 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 									((LPCREATESTRUCT)lParam)->hInstance, NULL);
 		}
 		return 0;
-
 	case WM_SIZE:
 		rect.left	= 24 * cxChar;
 		rect.top	=  2 * cyChar;

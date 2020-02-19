@@ -66,7 +66,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 	case WM_SIZE:
 		MoveWindow(hwndEdit, 0, 0, LOWORD(lParam), HIWORD(lParam), TRUE);
-		return 0;
+		return 0;LBS_STANDARD
 	case WM_COMMAND:
 		if (LOWORD(wParam) == ID_EDIT) 
 		{

@@ -72,10 +72,9 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 			HDC		hdc = BeginPaint(hwnd, &ps) ;
 
 			for (int i = 0; i < NUMLINES ; i++) {
-				//SetTextAlign(hdc, TA_RIGHT | TA_TOP);
 				TextOut(hdc, 0, cyChar * i, sysmetrics[i].szLabel,
 					lstrlen(sysmetrics[i].szLabel));
-				//SetTextAlign(hdc, TA_LEFT | TA_TOP);
+
 				TextOut(hdc, 22 * cxCaps, cyChar * i, sysmetrics[i].szDesc, 
 					lstrlen(sysmetrics[i].szDesc));
 

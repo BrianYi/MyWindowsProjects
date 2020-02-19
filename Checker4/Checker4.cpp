@@ -159,6 +159,7 @@ LRESULT CALLBACK ChildWndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lP
 		idFocus	= GetWindowLongPtr(hwnd, GWLP_ID);
 	case WM_KILLFOCUS:
 		InvalidateRect(hwnd, NULL, TRUE);
+		UpdateWindow(hwnd);
 		return 0;
 
 	case WM_PAINT:

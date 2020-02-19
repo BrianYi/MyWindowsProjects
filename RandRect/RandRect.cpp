@@ -56,7 +56,7 @@ int WINAPI WinMain (HINSTANCE hInstance, HINSTANCE hPrevInstance,
         else
         {
             DrawRectangle (hwnd) ;
-            Sleep(300);
+            Sleep(100);
         }
     }
     return msg.wParam ;

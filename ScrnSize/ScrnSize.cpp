@@ -20,8 +20,8 @@ int CDECL MessageBoxPrintf(TCHAR *szCaption, TCHAR *szFormat, ...)
 int WINAPI WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, __in LPSTR lpCmdLine, __in int nShowCmd )
 {
     int cxScreen, cyScreen;
-    cxScreen = GetSystemMetrics(SM_CXSCREEN);
-    cyScreen = GetSystemMetrics(SM_CYSCREEN);
+    cxScreen = GetSystemMetrics(SM_CXSCREEN);	// 获取屏幕width
+    cyScreen = GetSystemMetrics(SM_CYSCREEN);	// 获取屏幕height
     MessageBoxPrintf(TEXT("ScrnSize"),
         TEXT("The screen is %i pixels wide by %i pixels high."),
         cxScreen, cyScreen);
@@ -29,14 +29,14 @@ int WINAPI WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, 
     BOOL fResult;
     int aMouseInfo[3];
     TCHAR szText[1024];
-    fResult = GetSystemMetrics(SM_MOUSEPRESENT);
+    fResult = GetSystemMetrics(SM_MOUSEPRESENT);	// 返回值非0则表示安装了鼠标,否则0
 
     if (fResult == 0) {
         _tcscpy(szText, TEXT("No mouse installed.\n"));
     } else {
         _tcscpy(szText, TEXT("Mouse installed.\n"));
 
-        fResult = GetSystemMetrics(SM_SWAPBUTTON);
+        fResult = GetSystemMetrics(SM_SWAPBUTTON);	// 返回值非0则表示鼠标左右键交换了,否则0
 
         if (fResult == 0) {
             _tcscat(szText, TEXT("Buttons not swapped.\n"));
@@ -44,7 +44,7 @@ int WINAPI WinMain( __in HINSTANCE hInstance, __in_opt HINSTANCE hPrevInstance, 
             _tcscat(szText, TEXT("Buttons swapped.\n"));
         }
 
-        fResult = SystemParametersInfo(
+        fResult = SystemParametersInfo(	// 获取鼠标参数信息
             SPI_GETMOUSE,
             0,
             &aMouseInfo,

@@ -110,7 +110,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT message, WPARAM wParam, LPARAM lParam)
 		return 0;
 
 	case WM_CHAR:
-		if (fBlocking & (wParam == '\x1B')) {
+		if (fBlocking & (wParam == 0x1b/*'\x1B'*/)) {
 			DrawBoxOutline(hwnd, ptBeg, ptEnd);
 
 			ReleaseCapture();

@@ -122,6 +122,7 @@ LRESULT CALLBACK WndProc (HWND hwnd, UINT iMsg, WPARAM wParam, LPARAM lParam)
 		return 0;
 
 	case WM_DESTROY:
+		DeleteObject(hRgnClip);
 		PostQuitMessage(0);
 		return 0;
 
